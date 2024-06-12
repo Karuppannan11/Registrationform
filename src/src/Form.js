@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ConfirmationModal from './ConfirmationModal';
-import { useNavigate } from 'react-router-dom';
-const BASE_URL_STATE = 'http://192.168.101.154:5000/api';
-
 function Form() {
-
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  const [startMonth, setStartMonth] = useState('');
-  const [endMonth, setEndMonth] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
   const [states, setStates] = useState([]);
   const [selectedState, setSelectedState] = useState('');
@@ -24,45 +14,6 @@ function Form() {
   const [selectedGroups, setSelectedGroups] = useState('');
   const [members, setMembers] = useState([]);
   const [selectedMembers, setSelectedMembers] = useState('');
-  
-  const [cropmaster, setcropmaster] = useState([]);
-  const [selectedcropmaster, setSelectedcropmaster] = useState('');
-  const [cropvariety, setcropvariety] = useState([]);
-  const [selectedcropvariety, setSelectedcropvariety] = useState('');
-
-  const [cropsubvariety, setcropsubvariety] = useState([]);
-  const [selectedcropsubvariety, setSelectedcropsubvariety] = useState('');
-
-
-  const [cropmaster1, setcropmaster1] = useState([]);
-  const [selectedcropmaster1, setSelectedcropmaster1] = useState('');
-  const [cropvariety1, setcropvariety1] = useState([]);
-  const [selectedcropvariety1, setSelectedcropvariety1] = useState('');
-
-  const [cropsubvariety1, setcropsubvariety1] = useState([]);
-  const [selectedcropsubvariety1, setSelectedcropsubvariety1] = useState('');
-
-
-
-  
-  const [cropmaster2, setcropmaster2] = useState([]);
-  const [selectedcropmaster2, setSelectedcropmaster2] = useState('');
-  const [cropvariety2, setcropvariety2] = useState([]);
-  const [selectedcropvariety2, setSelectedcropvariety2] = useState('');
-
-  const [cropsubvariety2, setcropsubvariety2] = useState([]);
-  const [selectedcropsubvariety2, setSelectedcropsubvariety2] = useState('');
-
-
-  const [cropmaster3, setcropmaster3] = useState([]);
-  const [selectedcropmaster3, setSelectedcropmaster3] = useState('');
-  const [cropvariety3, setcropvariety3] = useState([]);
-  const [selectedcropvariety3, setSelectedcropvariety3] = useState('');
-
-  const [cropsubvariety3, setcropsubvariety3] = useState([]);
-  const [selectedcropsubvariety3, setSelectedcropsubvariety3] = useState('');
-
-
   const [selectedDoorNo, setSelectedDoorNo] = useState('');
   const [selectedStreet, setSelectedStreet] = useState('');
   const [selectedAadharNumber, setSelectedAadharNumber] = useState('');
@@ -77,9 +28,6 @@ function Form() {
   const [selectedNameOfTheFPO, setSelectedNameOfTheFPO] = useState('');
   const [selectedLatitude, setSelectedLatitude] = useState('');
   const [selectedLongitude, setSelectedLongitude] = useState('');
-  const [error, setError] = useState(null);
-
- 
   const [selectedIrrigationType, setSelectedIrrigationType] = useState('');
   const [selectedTotalAcresInTankfed, setSelectedTotalAcresInTankfed] = useState('');
   const [selectedAreaOfCultivationInTankfed, setSelectedAreaOfCultivationInTankfed] = useState('');
@@ -88,6 +36,9 @@ function Form() {
   const [selectedCultivationPractice1, setSelectedCultivationPractice1] = useState('');
   const [selectedLandPosition1, setSelectedLandPosition1] = useState('');
   const [selectedLandType1, setSelectedLandType1] = useState('');
+  const [selectedCropName1, setSelectedCropName1] = useState('');
+  const [selectedVariety1, setSelectedVariety1] = useState('');
+  const [selectedSubVariety1, setSelectedSubVariety1] = useState('');
   const [selectedSeason1, setSelectedSeason1] = useState('');
   const [selectedFertilizer1, setSelectedFertilizer1] = useState('');
   const [selectedBioFertilizer1, setSelectedBioFertilizer1] = useState('');
@@ -102,6 +53,9 @@ function Form() {
   const [selectedCultivationPractice2, setSelectedCultivationPractice2] = useState('');
   const [selectedLandPosition2, setSelectedLandPosition2] = useState('');
   const [selectedLandType2, setSelectedLandType2] = useState('');
+  const [selectedCropName2, setSelectedCropName2] = useState('');
+  const [selectedVariety2, setSelectedVariety2] = useState('');
+  const [selectedSubVariety2, setSelectedSubVariety2] = useState('');
   const [selectedSeason2, setSelectedSeason2] = useState('');
   const [selectedFertilizer2, setSelectedFertilizer2] = useState('');
   const [selectedBioFertilizer2, setSelectedBioFertilizer2] = useState('');
@@ -116,6 +70,9 @@ function Form() {
   const [selectedCultivationPractice3, setSelectedCultivationPractice3] = useState('');
   const [selectedLandPosition3, setSelectedLandPosition3] = useState('');
   const [selectedLandType3, setSelectedLandType3] = useState('');
+  const [selectedCropName3, setSelectedCropName3] = useState('');
+  const [selectedVariety3, setSelectedVariety3] = useState('');
+  const [selectedSubVariety3, setSelectedSubVariety3] = useState('');
   const [selectedSeason3, setSelectedSeason3] = useState('');
   const [selectedFertilizer3, setSelectedFertilizer3] = useState('');
   const [selectedBioFertilizer3, setSelectedBioFertilizer3] = useState('');
@@ -130,6 +87,9 @@ function Form() {
   const [selectedCultivationPractice, setSelectedCultivationPractice] = useState('');
   const [selectedLandPosition, setSelectedLandPosition] = useState('');
   const [selectedLandType, setSelectedLandType] = useState('');
+  const [selectedCropName, setSelectedCropName] = useState('');
+  const [selectedVariety, setSelectedVariety] = useState('');
+  const [selectedSubVariety, setSelectedSubVariety] = useState('');
   const [selectedSeason, setSelectedSeason] = useState('');
   const [selectedFertilizer, setSelectedFertilizer] = useState('');
   const [selectedBioFertilizer, setSelectedBioFertilizer] = useState('');
@@ -222,20 +182,16 @@ function Form() {
   const [selectedLivestockgoat, setSelectedLivestockgoat] = useState('');
   const [selectedLivestocksheep, setSelectedLivestocksheep] = useState('');
 
-  const handleStartMonthChange = (event) => {
-    setStartMonth(event.target.value);
-  };
-
-  const handleEndMonthChange = (event) => {
-    setEndMonth(event.target.value);
-  };
   const year = new Date();
 
-  const navigate = useNavigate(); 
 
-  const handleViewReport = () => {
-    navigate('/record');
-  };
+
+  const [LiveStockInsuranceDetailsothers20, setLiveStockInsuranceDetailsothers20] = useState('');
+  const [LiveStockInsuranceDetailsothers21, setLiveStockInsuranceDetailsothers21] = useState('');
+  const [LiveStockInsuranceDetailsothers22, setLiveStockInsuranceDetailsothers22] = useState('');
+  const [LiveStockInsuranceDetailsothers23, setLiveStockInsuranceDetailsothers23] = useState('');
+  const [LiveStockInsuranceDetailsothers24, setLiveStockInsuranceDetailsothers24] = useState('');
+
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [message, setMessage] = useState('');
@@ -254,26 +210,6 @@ function Form() {
 
   const [showFields, setShowFields] = useState(initialShowFields);
 
-
-  const getLocation = (e) => {
-    e.preventDefault(); // Prevents the default form submission behavior
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          console.log("Location fetched successfully", position);
-          setSelectedLatitude(position.coords.latitude);
-          setSelectedLongitude(position.coords.longitude);
-        },
-        (error) => {
-          console.error("Error fetching location", error);
-          setError(error.message);
-        }
-      );
-    } else {
-      setError('Geolocation is not supported by this browser.');
-    }
-  };
-  
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     setShowFields((prevFields) => ({
@@ -341,13 +277,13 @@ function Form() {
     }
     if (!selectedFarmerMobile) {
       alert('Please fill out farmer mobile');
+      return;
     }else{
-          emptyValue(); 
+          emptyValue(); // Logic to reset the form
+
     }
 
     const formData = {
-      startMonth :startMonth,
-      endMonth:endMonth,
       state: selectedState,
       district: selectedDistrict,
       location: selectedLocation,
@@ -379,26 +315,9 @@ function Form() {
       cultivationpractice1: selectedCultivationPractice1,
       landposition1: selectedLandPosition1,
       landtype1: selectedLandType1,
-
-      cropname: selectedcropmaster,
-      variety: selectedcropvariety,
-      subvariety: selectedcropsubvariety,
-
-
-      cropname1: selectedcropmaster1,
-      variety1: selectedcropvariety1,
-      subvariety1: selectedcropsubvariety1,
-       
-     
-      cropname2: selectedcropmaster2,
-      variety2: selectedcropvariety2,
-      subvariety2: selectedcropsubvariety2,
-
-      cropname3: selectedcropmaster3,
-      variety3: selectedcropvariety3,
-      subvariety3: selectedcropsubvariety3,
-  
-
+      cropname1: selectedCropName1,
+      variety1: selectedVariety1,
+      subvariety1: selectedSubVariety1,
       season1: selectedSeason1,
       fertilizer1: selectedFertilizer1,
       biofertilizer1: selectedBioFertilizer1,
@@ -413,6 +332,9 @@ function Form() {
       cultivationpractice2: selectedCultivationPractice2,
       landposition2: selectedLandPosition2,
       landtype2: selectedLandType2,
+      cropname2: selectedCropName2,
+      variety2: selectedVariety2,
+      subvariety2: selectedSubVariety2,
       season2: selectedSeason2,
       fertilizer2: selectedFertilizer2,
       biofertilizer2: selectedBioFertilizer2,
@@ -427,6 +349,9 @@ function Form() {
       cultivationpractice3: selectedCultivationPractice3,
       landposition3: selectedLandPosition3,
       landtype3: selectedLandType3,
+      cropname3: selectedCropName3,
+      variety3: selectedVariety3,
+      subvariety3: selectedSubVariety3,
       season3: selectedSeason3,
       fertilizer3: selectedFertilizer3,
       biofertilizer3: selectedBioFertilizer3,
@@ -442,9 +367,9 @@ function Form() {
       cultivationpractice: selectedCultivationPractice,
       landposition: selectedLandPosition,
       landtype: selectedLandType,
-      // cropname: Selectedcropmaster,
-      // variety: selectedVariety,
-      // subvariety: selectedSubVariety,
+      cropname: selectedCropName,
+      variety: selectedVariety,
+      subvariety: selectedSubVariety,
       season: selectedSeason,
       fertilizer: selectedFertilizer,
       biofertilizer: selectedBioFertilizer,
@@ -545,7 +470,7 @@ function Form() {
 
     try {
       console.log('MYDATA', formData);
-      const response = await fetch('http://192.168.101.154:5000/submit', {
+      const response = await fetch('https://deployapi-6233.onrender.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -553,33 +478,27 @@ function Form() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error('Network request failed');
-      }
       
-      
-      console.log(formData);
-    
+
     } catch (error) {
       console.error(error);
     }
   };
   const emptyValue = async () => {
-
-    setIsSubmitted(true);  setStartMonth('');  setEndMonth(''); setSelectedState(''); setSelectedDistrict(''); setSelectedLocation(''); setSelectedClusters(''); setSelectedGroups(''); setSelectedMembers(''); setSelectedDoorNo(''); setSelectedStreet(''); setSelectedAadharNumber(''); setSelectedFarmerName(''); setSelectedSpouseName(''); setSelectedFatherName(''); setSelectedDateBirth(''); setSelectedGender(''); setSelectedFarmerMobile(''); setSelectedAlternateNumber(''); setSelectedIsMemberInFPO(''); setSelectedNameOfTheFPO(''); setSelectedLatitude('');
-    setSelectedLongitude(''); setSelectedIrrigationType(''); setSelectedTotalAcresInTankfed(''); setSelectedAreaOfCultivationInTankfed(''); setSelectedSoilType1(''); setSelectedLandOwnership1(''); setSelectedCultivationPractice1(''); setSelectedLandPosition1(''); setSelectedLandType1(''); 
-    setSelectedSeason1(''); setSelectedFertilizer1(''); setSelectedBioFertilizer1('');
+    setIsSubmitted(true); setSelectedState(''); setSelectedDistrict(''); setSelectedLocation(''); setSelectedClusters(''); setSelectedGroups(''); setSelectedMembers(''); setSelectedDoorNo(''); setSelectedStreet(''); setSelectedAadharNumber(''); setSelectedFarmerName(''); setSelectedSpouseName(''); setSelectedFatherName(''); setSelectedDateBirth(''); setSelectedGender(''); setSelectedFarmerMobile(''); setSelectedAlternateNumber(''); setSelectedIsMemberInFPO(''); setSelectedNameOfTheFPO(''); setSelectedLatitude('');
+    setSelectedLongitude(''); setSelectedIrrigationType(''); setSelectedTotalAcresInTankfed(''); setSelectedAreaOfCultivationInTankfed(''); setSelectedSoilType1(''); setSelectedLandOwnership1(''); setSelectedCultivationPractice1(''); setSelectedLandPosition1(''); setSelectedLandType1(''); setSelectedCropName1(''); setSelectedVariety1('');
+    setSelectedSubVariety1(''); setSelectedSeason1(''); setSelectedFertilizer1(''); setSelectedBioFertilizer1('');
     setSelectedLastYearYields1(''); setSelectedRateOfSales1(''); setSelectedAvailabilityOfMachinery1(''); setSelectedCropInsurance1('');
     setSelectedTotalAcresInRainfed(''); setSelectedAreaOfCultivationInRainfed('');
-    setSelectedSoilType2(''); setSelectedLandOwnership2(''); setSelectedCultivationPractice2(''); setSelectedLandPosition2(''); setSelectedLandType2(''); 
-     setSelectedSeason2(''); setSelectedFertilizer2(''); setSelectedBioFertilizer2(''); setSelectedLastYearYields2('');
+    setSelectedSoilType2(''); setSelectedLandOwnership2(''); setSelectedCultivationPractice2(''); setSelectedLandPosition2(''); setSelectedLandType2(''); setSelectedCropName2('');
+    setSelectedVariety2(''); setSelectedSubVariety2(''); setSelectedSeason2(''); setSelectedFertilizer2(''); setSelectedBioFertilizer2(''); setSelectedLastYearYields2('');
     setSelectedRateOfSales2(''); setSelectedAvailabilityOfMachinery2(''); setSelectedCropInsurance2(''); setSelectedTotalAcresInBorewell('');
     setSelectedAreaOfCultivationInBorewell(''); setSelectedSoilType3(''); setSelectedLandOwnership3(''); setSelectedCultivationPractice3('');
-    setSelectedLandPosition3(''); setSelectedLandType3('');
-   setSelectedSeason3(''); setSelectedFertilizer3(''); setSelectedBioFertilizer3(''); setSelectedLastYearYields3('');
+    setSelectedLandPosition3(''); setSelectedLandType3(''); setSelectedCropName3('');
+    setSelectedVariety3(''); setSelectedSubVariety3(''); setSelectedSeason3(''); setSelectedFertilizer3(''); setSelectedBioFertilizer3(''); setSelectedLastYearYields3('');
     setSelectedRateOfSales3(''); setSelectedAvailabilityOfMachinery3(''); setSelectedCropInsurance3(''); setSelectedTotalAcresInDripOpenWellCanalIrrigation(''); setSelectedAreaOfCultivationInDripOpenWellCanalIrrigation(''); setSelectedSoilType('');
-    setSelectedLandOwnership(''); setSelectedCultivationPractice(''); setSelectedLandPosition(''); setSelectedLandType(''); 
-
+    setSelectedLandOwnership(''); setSelectedCultivationPractice(''); setSelectedLandPosition(''); setSelectedLandType(''); setSelectedCropName('');
+    setSelectedVariety(''); setSelectedSubVariety('');
     setSelectedSeason('');
     setSelectedFertilizer('');
     setSelectedBioFertilizer('');
@@ -650,23 +569,6 @@ function Form() {
     setSelectedLiveStockInsuranceDetailsothers20(''); setSelectedLiveStockInsuranceDetailsothers21(''); setSelectedLiveStockInsuranceDetailsothers22(''); setSelectedLiveStockInsuranceDetailsothers23(''); setSelectedLiveStockInsuranceDetailsothers24('');
     setShowFields(initialShowFields);
     setSelectedIrrigationType('');
-    
-
-    setSelectedcropvariety1('');
-    setSelectedcropmaster1('');
-    setSelectedcropvariety1('');
-    setSelectedcropsubvariety1('');
-
-    setSelectedcropmaster2('');
-    setSelectedcropvariety2('');
-    setSelectedcropsubvariety2('');
-    
-
-    setSelectedcropsubvariety3('');
-    setSelectedcropvariety3('');
-    setSelectedcropmaster3("");
-
-
     setSelectedLiveStockDetails('');
     setSelectedirrigationtyperainfed('');
     setSelectedirrigationtypeborewell('');
@@ -676,6 +578,7 @@ function Form() {
   const handleConfirm = () => {
     handleFormSubmit();
     setModalOpen(false);
+
   };
 
   const handleCancel = () => {
@@ -683,7 +586,7 @@ function Form() {
   };
   const fetchStates = async () => {
     try {
-      const response = await fetch(`${BASE_URL_STATE}/state`);
+      const response = await fetch('https://deployapi-6233.onrender.com/api/state');
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -696,7 +599,7 @@ function Form() {
   
   const fetchDistricts = async (stateCode) => {
     try {
-      const response = await fetch(`${BASE_URL_STATE}/district?state_scode=${stateCode}`);
+      const response = await fetch(`https://deployapi-6233.onrender.com/api/district?state_scode=${stateCode}`);
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -710,7 +613,7 @@ function Form() {
   
   const fetchLocations = async (districtCode) => {
     try {
-      const response = await fetch(`${BASE_URL_STATE}/location?district_dcode=${districtCode}`);
+      const response = await fetch(`https://deployapi-6233.onrender.com/api/location?district_dcode=${districtCode}`);
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -724,7 +627,7 @@ function Form() {
   
   const fetchClusters = async (locationCode) => {
     try {
-      const response = await fetch(`${BASE_URL_STATE}/cluster?location_lcode=${locationCode}`);
+      const response = await fetch(`https://deployapi-6233.onrender.com/api/cluster?location_lcode=${locationCode}`);
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -738,7 +641,7 @@ function Form() {
   
   const fetchGroups = async (clusterCode) => {
     try {
-      const response = await fetch(`${BASE_URL_STATE}/grp?cluster_ccode=${clusterCode}`);
+      const response = await fetch(`https://deployapi-6233.onrender.com/api/grp?cluster_ccode=${clusterCode}`);
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -751,7 +654,7 @@ function Form() {
   
   const fetchMembers = async (groupCode) => {
     try {
-      const response = await fetch(`${BASE_URL_STATE}/members?group_gcode=${groupCode}`);
+      const response = await fetch(`https://deployapi-6233.onrender.com/api/members?group_gcode=${groupCode}`);
       if (!response.ok) {
         throw new Error('Network request failed');
       }
@@ -761,338 +664,6 @@ function Form() {
       console.error(error);
     }
   };
-  
-//
-
-const fetchcropmaster1 = async () => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropmaster1`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    setcropmaster1(data);
-    console.log(cropmaster1);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropvariety1 = async (ccode) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropvariety1?ccode=${ccode}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('variety:', data);
-    setcropvariety1(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropsubvariety1 = async (v_id) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropsubvariety1?v_id=${v_id}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('subvariety:', data);
-    setcropsubvariety1(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-useEffect(() => {
-  fetchcropmaster1();
-}, []);
-
-useEffect(() => {
-  if (selectedcropmaster1) {
-    fetchcropvariety1(selectedcropmaster1);
-  }
-}, [selectedcropmaster1]);
-
-useEffect(() => {
-  if (selectedcropvariety1) {
-    fetchcropsubvariety1(selectedcropvariety1);
-  }
-}, [selectedcropvariety1]);
-
-
-  
-
-const handleCropmasterChange1 = (value) => {
-  setSelectedcropmaster1(value);
-};
-
-const handleVarity1 = (value) => {
-  setSelectedcropvariety1(value);
- 
-};
-
-const handlesubVarity1 = (value) => {
-  setSelectedcropsubvariety1(value);
- 
-};
-
-
-///
-const fetchcropmaster2 = async () => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropmaster2`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    setcropmaster2(data);
-    console.log(cropmaster2);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropvariety2 = async (ccode) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropvariety2?ccode=${ccode}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('variety:', data);
-    setcropvariety2(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropsubvariety2 = async (v_id) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropsubvariety2?v_id=${v_id}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('subvariety:', data);
-    setcropsubvariety2(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-
-useEffect(() => {
-  fetchcropmaster2();
-}, []);
-
-useEffect(() => {
-  if (selectedcropmaster2) {
-    fetchcropvariety2(selectedcropmaster2);
-  }
-}, [selectedcropmaster2]);
-
-useEffect(() => {
-  if (selectedcropvariety2) {
-    fetchcropsubvariety2(selectedcropvariety2);
-  }
-}, [selectedcropvariety2]);
-
-
-
-
-const handleCropmasterChange2 = (value) => {
-  setSelectedcropmaster2(value);
-};
-
-const handleVarity2 = (value) => {
-  setSelectedcropvariety2(value);
- 
-};
-
-const handlesubVarity2 = (value) => {
-  setSelectedcropsubvariety2(value);
- 
-};
-
-
-const fetchcropmaster3 = async () => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropmaster3`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    setcropmaster3(data);
-    console.log(cropmaster2);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropvariety3 = async (ccode) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropvariety3?ccode=${ccode}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-   
-    setcropvariety3(data);
-    console.log('variety:', data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropsubvariety3 = async (v_id) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropsubvariety3?v_id=${v_id}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('subvariety:', data);
-    setcropsubvariety3(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-
-useEffect(() => {
-  fetchcropmaster3();
-}, []);
-
-useEffect(() => {
-  if (selectedcropmaster3) {
-    fetchcropvariety3(selectedcropmaster3);
-  }
-}, [selectedcropmaster3]);
-
-useEffect(() => {
-  if (selectedcropvariety3) {
-    fetchcropsubvariety3(selectedcropvariety3);
-  }
-}, [selectedcropvariety3]);
-
-
-
-
-const handleCropmasterChange3 = (value) => {
-  setSelectedcropmaster3(value);
-  console.log(value);
-};
-
-const handleVarity3 = (value) => {
-  setSelectedcropvariety3(value);
- 
-};
-
-const handlesubVarity3 = (value) => {
-  setSelectedcropsubvariety3(value);
- 
-};
-
-
-
-
-
-const fetchcropmaster = async () => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropmaster`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    setcropmaster(data);
-    console.log(cropmaster);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropvariety = async (ccode) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropvariety?ccode=${ccode}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('variety:', data);
-    setcropvariety(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchcropsubvariety = async (v_id) => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropsubvariety?v_id=${v_id}`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    console.log('subvariety:', data);
-    setcropsubvariety(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-
-useEffect(() => {
-  fetchcropmaster();
-}, []);
-
-useEffect(() => {
-  if (selectedcropmaster) {
-    fetchcropvariety(selectedcropmaster);
-  }
-}, [selectedcropmaster]);
-
-useEffect(() => {
-  if (selectedcropvariety) {
-    fetchcropsubvariety(selectedcropvariety);
-  }
-}, [selectedcropvariety]);
-
-
-
-
-const handleCropmasterChange = (value) => {
-  setSelectedcropmaster(value);
-};
-
-const handleVarity = (value) => {
-  setSelectedcropvariety(value);
- 
-};
-
-const handlesubVarity = (value) => {
-  setSelectedcropsubvariety(value);
- 
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
   useEffect(() => {
     fetchStates();
@@ -1173,30 +744,6 @@ const handlesubVarity = (value) => {
         <div className="title ">
           <h3 id="start" style={{ fontSize: '20px', fontFamily: 'Times New Roman', fontWeight: 'bold', color: '#333' }}>FARMER REGISTRATION FORM</h3>
         </div>
-         <div style={{ textAlign: 'center', marginBottom: '10px' }}>
-       
-    </div>
-    <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="startMonth">Select Start Season:</label>
-          <select value={startMonth} onChange={handleStartMonthChange}>
-            <option value="" disabled>Select start month</option>
-            {months.map((month, index) => (
-              <option key={index} value={month}>{month}</option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="endMonth">Select End Season:</label>
-          <select value={endMonth} onChange={handleEndMonthChange}>
-            <option value="" disabled>Select end month</option>
-            {months.map((month, index) => (
-              <option key={index} value={month}>{month}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-     
         <div className="form-row" >
           <div className="form-group">
             <label htmlFor="state">1.State</label>
@@ -1233,11 +780,6 @@ const handlesubVarity = (value) => {
               ))}
             </select>
           </div>
-
-
-
-
-
           <div className="form-group">
             <label htmlFor="cluster">4.Cluster</label>
             <select id="cluster" value={selectedClusters} onChange={(e) => handleClusterChange(e.target.value)}>
@@ -1368,43 +910,23 @@ const handlesubVarity = (value) => {
             <input type="text" id="fpo" name="fpo" value={selectedNameOfTheFPO} onChange={(e) => setSelectedNameOfTheFPO(e.target.value)} />
           </div>
         </div>
-        <div>
-     
-      <button style={{ marginBottom: '10px' }} onClick={getLocation}>Get Location</button>
-      {error ? (
-        <p>Error: {error}</p>
-      ) : (
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="latitude">19. Latitude</label>
-            <input
-              type="text"
-              id="latitude"
-              name="latitude"
-              value={selectedLatitude}
-              onChange={(e) => setSelectedLatitude(e.target.value)} readOnly
-            />
+            <label htmlFor="latitude">19.Latitude</label>
+            <input type="text" id="latitude" name="latitude" value={selectedLatitude} onChange={(e) => setSelectedLatitude(e.target.value)} />
           </div>
 
           <div className="form-group">
-            <label htmlFor="longitude">20. Longitude</label>
-            <input
-              type="text"
-              id="longitude"
-              name="longitude"
-              value={selectedLongitude}
-              onChange={(e) => setSelectedLongitude(e.target.value)} readOnly
-            />
+            <label htmlFor="longitude">20.Longitude</label>
+            <input type="text" id="longitude" name="longitude" value={selectedLongitude} onChange={(e) => setSelectedLongitude(e.target.value)} />
           </div>
         </div>
-      )}
-    </div>
-  
+
         <div className="form-row">
           <div className="form-group">
             <div className="Irrigation">
               <label htmlFor="Irrigation">21.Irrigation Type</label><br></br>
-              <div className="checkbox-group-container">
+              <div class="checkbox-group-container">
                 <div className="checkbox-group" value={selectedIrrigationType} onChange={(e) => setSelectedIrrigationType(e.target.value)}>
                   <label>
                     <input type="checkbox" id="tankfed1" name="tankfed" value="Tankfed" checked={showFields.tankfed} onChange={handleCheckboxChange} /> Tankfed
@@ -1499,46 +1021,19 @@ const handlesubVarity = (value) => {
               <span style={{ backgroundColor: 'chocolate', color: 'white', padding: '8px 16px', textAlign: 'center', display: 'inline-block', fontSize: '16px', margin: '4px 2px', borderRadius: '8px', }}>Crop Details</span>
             </div>
             <div className="form-row">
-             
-
-
-
-          <div className="form-group">
-            <label htmlFor="cropmaster1">Crop Name</label>
-            <select id="cropmaster1" value={selectedcropmaster1} onChange={(e) => handleCropmasterChange1(e.target.value)}>
-              <option value="">Select</option>
-              {cropmaster1.map((cropmaster1) => (
-                <option key={cropmaster1.ccode} value={cropmaster1.ccode}>
-                  {cropmaster1.cname}
-                </option>
-              ))}
-            </select>
-          </div>
-           <div className="form-group">
-            <label htmlFor="cropvariety1">Crop Variety</label>
-            <select id="cropvariety1" value={selectedcropvariety1} onChange={(e) => handleVarity1(e.target.value)}>
-              <option value="">Select </option>
-              {cropvariety1.map((cropvariety1) => (
-                <option key={cropvariety1.v_id} value={cropvariety1.v_id}>
-                  {cropvariety1.cvariety}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className="form-row" >
-          <div className="form-group">
-            <label htmlFor="cropsubvariety1">Crop Subvariety</label>
-            <select id="cropsubvariety1" value={selectedcropsubvariety1} onChange={(e) => handlesubVarity1(e.target.value)}>
-              <option value="">Select</option>
-              {cropsubvariety1.map((cropsubvariety1) => (
-                <option key={cropsubvariety1.sv_id} value={cropsubvariety1.sv_id}>
-                  {cropsubvariety1.subvariety}
-                </option>
-              ))}
-            </select>
-          </div>
-              <div className="form-group">   
+              <div className="form-group">
+                <label htmlFor="cropName">Crop Name</label>
+                <input type="text" id="cropName" name="cropName" value={selectedCropName1} onChange={(e) => setSelectedCropName1(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="variety">Variety</label>
+                <input type="text" id="variety" name="variety" value={selectedVariety1} onChange={(e) => setSelectedVariety1(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="subVariety">Sub Variety</label>
+                <input type="text" id="subVariety" name="subVariety" value={selectedSubVariety1} onChange={(e) => setSelectedSubVariety1(e.target.value)} />
+              </div>
+              <div className="form-group">
                 <label htmlFor="season">Season</label>
                 <input type="text" id="season" name="season" value={selectedSeason1} onChange={(e) => setSelectedSeason1(e.target.value)} />
               </div>
@@ -1551,15 +1046,15 @@ const handlesubVarity = (value) => {
                 <input type="text" id="bioFertilizer" name="bioFertilizer" value={selectedBioFertilizer1} onChange={(e) => setSelectedBioFertilizer1(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="lastYearYields">Last Year Yield/Acre (Kg)</label>
+                <label htmlFor="lastYearYields">Last Year Yields</label>
                 <input type="text" id="lastYearYields" name="lastYearYields" value={selectedLastYearYields1} onChange={(e) => setSelectedLastYearYields1(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="rateOfSales">Rate of Sales/Kg (Rs)</label>
+                <label htmlFor="rateOfSales">Rate of Sales</label>
                 <input type="text" id="rateOfSales" name="rateOfSales" value={selectedRateOfSales1} onChange={(e) => setSelectedRateOfSales1(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="availabilityOfMachinery">Cost of Cultivation/Acre (Rs)</label>
+                <label htmlFor="availabilityOfMachinery">Availability of Machinery</label>
                 <input type="text" id="availabilityOfMachinery" name="availabilityOfMachinery" value={selectedAvailabilityOfMachinery1} onChange={(e) => setSelectedAvailabilityOfMachinery1(e.target.value)} />
               </div>
               <div className="form-group">
@@ -1637,46 +1132,18 @@ const handlesubVarity = (value) => {
               <span style={{ backgroundColor: 'chocolate', color: 'white', padding: '8px 16px', textAlign: 'center', display: 'inline-block', fontSize: '16px', margin: '4px 2px', borderRadius: '8px', }}>Crop Details</span>
             </div>
             <div className="form-row">
-              
-
-          <div className="form-group">
-            <label htmlFor="cropmaster1">Crop Name</label>
-            <select id="cropmaster1" value={selectedcropmaster2} onChange={(e) => handleCropmasterChange2(e.target.value)}>
-              <option value="">Select</option>
-              {cropmaster2.map((cropmaster2) => (
-                <option key={cropmaster2.ccode} value={cropmaster2.ccode}>
-                  {cropmaster2.cname}
-                </option>
-              ))}
-            </select>
-          </div>
-           <div className="form-group">
-            <label htmlFor="cropvariety1">Crop Variety</label>
-            <select id="cropvariety1" value={selectedcropvariety2} onChange={(e) => handleVarity2(e.target.value)}>
-              <option value="">Select </option>
-              {cropvariety2.map((cropvariety2) => (
-                <option key={cropvariety2.v_id} value={cropvariety2.v_id}>
-                  {cropvariety2.cvariety}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className="form-row" >
-          <div className="form-group">
-            <label htmlFor="cropsubvariety1">Crop Subvariety</label>
-            <select id="cropsubvariety1" value={selectedcropsubvariety2} onChange={(e) => handlesubVarity2(e.target.value)}>
-              <option value="">Select</option>
-              {cropsubvariety2.map((cropsubvariety2) => (
-                <option key={cropsubvariety2.sv_id} value={cropsubvariety2.sv_id}>
-                  {cropsubvariety2.subvariety}
-                </option>
-              ))}
-            </select>
-          </div>
-
-
-
+              <div className="form-group">
+                <label htmlFor="cropName">Crop Name</label>
+                <input type="text" id="cropName" name="cropName" value={selectedCropName2} onChange={(e) => setSelectedCropName2(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="variety">Variety</label>
+                <input type="text" id="variety" name="variety" value={selectedVariety2} onChange={(e) => setSelectedVariety2(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="subVariety">Sub Variety</label>
+                <input type="text" id="subVariety" name="subVariety" value={selectedSubVariety2} onChange={(e) => setSelectedSubVariety2(e.target.value)} />
+              </div>
               <div className="form-group">
                 <label htmlFor="season">Season</label>
                 <input type="text" id="season" name="season" value={selectedSeason2} onChange={(e) => setSelectedSeason2(e.target.value)} />
@@ -1690,15 +1157,15 @@ const handlesubVarity = (value) => {
                 <input type="text" id="bioFertilizer" name="bioFertilizer" value={selectedBioFertilizer2} onChange={(e) => setSelectedBioFertilizer2(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="lastYearYields">Last Year Yield/Acre (Kg)</label>
+                <label htmlFor="lastYearYields">Last Year Yields</label>
                 <input type="text" id="lastYearYields" name="lastYearYields" value={selectedLastYearYields2} onChange={(e) => setSelectedLastYearYields2(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="rateOfSales">Rate of Sales/Kg (Rs)</label>
+                <label htmlFor="rateOfSales">Rate of Sales</label>
                 <input type="text" id="rateOfSales" name="rateOfSales" value={selectedRateOfSales2} onChange={(e) => setSelectedRateOfSales2(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="availabilityOfMachinery">Cost of Cultivation/Acre (Rs)</label>
+                <label htmlFor="availabilityOfMachinery">Availability of Machinery</label>
                 <input type="text" id="availabilityOfMachinery" name="availabilityOfMachinery" value={selectedAvailabilityOfMachinery2} onChange={(e) => setSelectedAvailabilityOfMachinery2(e.target.value)} />
               </div>
               <div className="form-group">
@@ -1777,49 +1244,18 @@ const handlesubVarity = (value) => {
               <span style={{ backgroundColor: 'chocolate', color: 'white', padding: '8px 16px', textAlign: 'center', display: 'inline-block', fontSize: '16px', margin: '4px 2px', borderRadius: '8px', }}>Crop Details</span>
             </div>
             <div className="form-row">
-             
-            <div className="form-group">
-        <label htmlFor="cropmaster2">Crop Name</label>
-        <select id="cropmaster2" value={selectedcropmaster3} onChange={(e) => handleCropmasterChange3(e.target.value)}>
-          <option value="">Select</option>
-          {cropmaster3.map((cropmaster3) => (
-            <option key={cropmaster3.ccode} value={cropmaster3.ccode}>
-              {cropmaster3.cname}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* const [cropmaster3, setcropmaster3] = useState([]);
-  const [selectedcropmaster3, setSelectedcropmaster3] = useState('');
-  const [cropvariety3, setcropvariety3] = useState([]);
-  const [selectedcropvariety3, setSelectedcropvariety3] = useState('');
-
-  const [cropsubvariety3, setcropsubvariety3] = useState([]);
-  const [selectedcropsubvariety3, setSelectedcropsubvariety3] = useState(''); */}
-      <div className="form-group">
-        <label htmlFor="cropvariety2">Crop Variety</label>
-        <select id="cropvariety2" value={selectedcropvariety3} onChange={(e) => handleVarity3(e.target.value)}>
-          <option value="">Select</option>
-          {cropvariety3.map((cropvariety3) => (
-            <option key={cropvariety3.v_id} value={cropvariety3.v_id}>
-              {cropvariety3.cvariety}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="cropsubvariety2">Crop Subvariety</label>
-        <select id="cropsubvariety2" value={selectedcropsubvariety3} onChange={(e) => handlesubVarity3(e.target.value)}>
-          <option value="">Select</option>
-          {cropsubvariety3.map((cropsubvariety3) => (
-            <option key={cropsubvariety3.sv_id} value={cropsubvariety3.sv_id}>
-              {cropsubvariety3.subvariety}
-            </option>
-          ))}
-        </select>
-      </div>
+              <div className="form-group">
+                <label htmlFor="cropName">Crop Name</label>
+                <input type="text" id="cropName" name="cropName" value={selectedCropName3} onChange={(e) => setSelectedCropName3(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="variety">Variety</label>
+                <input type="text" id="variety" name="variety" value={selectedVariety3} onChange={(e) => setSelectedVariety3(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="subVariety">Sub Variety</label>
+                <input type="text" id="subVariety" name="subVariety" value={selectedSubVariety3} onChange={(e) => setSelectedSubVariety3(e.target.value)} />
+              </div>
               <div className="form-group">
                 <label htmlFor="season">Season</label>
                 <input type="text" id="season" name="season" value={selectedSeason3} onChange={(e) => setSelectedSeason3(e.target.value)} />
@@ -1833,15 +1269,15 @@ const handlesubVarity = (value) => {
                 <input type="text" id="bioFertilizer" name="bioFertilizer" value={selectedBioFertilizer3} onChange={(e) => setSelectedBioFertilizer3(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="lastYearYields">Last Year Yield/Acre (Kg)</label>
+                <label htmlFor="lastYearYields">Last Year Yields</label>
                 <input type="text" id="lastYearYields" name="lastYearYields" value={selectedLastYearYields3} onChange={(e) => setSelectedLastYearYields3(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="rateOfSales">Rate of Sales/Kg (Rs)</label>
+                <label htmlFor="rateOfSales">Rate of Sales</label>
                 <input type="text" id="rateOfSales" name="rateOfSales" value={selectedRateOfSales3} onChange={(e) => setSelectedRateOfSales3(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="availabilityOfMachinery">Cost of Cultivation/Acre (Rs)</label>
+                <label htmlFor="availabilityOfMachinery">Availability of Machinery</label>
                 <input type="text" id="availabilityOfMachinery" name="availabilityOfMachinery" value={selectedAvailabilityOfMachinery3} onChange={(e) => setSelectedAvailabilityOfMachinery3(e.target.value)} />
               </div>
               <div className="form-group">
@@ -1920,44 +1356,18 @@ const handlesubVarity = (value) => {
 
             </div>
             <div className="form-row">
-             
-          <div className="form-group">
-            <label htmlFor="cropmaster">Crop Name</label>
-            <select id="cropmaster" value={selectedcropmaster} onChange={(e) => handleCropmasterChange(e.target.value)}>
-              <option value="">Select</option>
-              {cropmaster.map((cropmaster) => (
-                <option key={cropmaster.ccode} value={cropmaster.ccode}>
-                  {cropmaster.cname}
-                </option>
-              ))}
-            </select>
-          </div>
-           <div className="form-group">
-            <label htmlFor="cropvariety">Crop Variety</label>
-            <select id="cropvariety" value={selectedcropvariety} onChange={(e) => handleVarity(e.target.value)}>
-              <option value="">Select </option>
-              {cropvariety.map((cropvariety) => (
-                <option key={cropvariety.v_id} value={cropvariety.v_id}>
-                  {cropvariety.cvariety}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className="form-row" >
-          <div className="form-group">
-            <label htmlFor="cropsubvariety">Crop Subvariety</label>
-            <select id="cropsubvariety" value={selectedcropsubvariety} onChange={(e) => handlesubVarity(e.target.value)}>
-              <option value="">Select</option>
-              {cropsubvariety.map((cropsubvariety) => (
-                <option key={cropsubvariety.sv_id} value={cropsubvariety.sv_id}>
-                  {cropsubvariety.subvariety}
-                </option>
-              ))}
-            </select>
-          </div>
-
-
+              <div className="form-group">
+                <label htmlFor="cropName">Crop Name</label>
+                <input type="text" id="cropName" name="cropName" value={selectedCropName} onChange={(e) => setSelectedCropName(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="variety">Variety</label>
+                <input type="text" id="variety" name="variety" value={selectedVariety} onChange={(e) => setSelectedVariety(e.target.value)} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="subVariety">Sub Variety</label>
+                <input type="text" id="subVariety" name="subVariety" value={selectedSubVariety} onChange={(e) => setSelectedSubVariety(e.target.value)} />
+              </div>
               <div className="form-group">
                 <label htmlFor="season">Season</label>
                 <input type="text" id="season" name="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)} />
@@ -1971,15 +1381,15 @@ const handlesubVarity = (value) => {
                 <input type="text" id="bioFertilizer" name="bioFertilizer" value={selectedBioFertilizer} onChange={(e) => setSelectedBioFertilizer(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="lastYearYields">Last Year Yield/Acre (Kg)</label>
+                <label htmlFor="lastYearYields">Last Year Yields</label>
                 <input type="text" id="lastYearYields" name="lastYearYields" value={selectedLastYearYields} onChange={(e) => setSelectedLastYearYields(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="rateOfSales">Rate of Sales/Kg (Rs)</label>
+                <label htmlFor="rateOfSales">Rate of Sales</label>
                 <input type="text" id="rateOfSales" name="rateOfSales" value={selectedRateOfSales} onChange={(e) => setSelectedRateOfSales(e.target.value)} />
               </div>
               <div className="form-group">
-                <label htmlFor="availabilityOfMachinery">Cost of Cultivation/kg (Rs)</label>
+                <label htmlFor="availabilityOfMachinery">Availability of Machinery</label>
                 <input type="text" id="availabilityOfMachinery" name="availabilityOfMachinery" value={selectedAvailabilityOfMachinery} onChange={(e) => setSelectedAvailabilityOfMachinery(e.target.value)} />
               </div>
               <div className="form-group">
@@ -2346,7 +1756,7 @@ const handlesubVarity = (value) => {
 
           {showFields.buffalow && (
             <div className="form-group">
-              <label htmlFor="buffalo">Buffalow</label>
+              <label htmlFor="buffalo">Buffalo</label>
               <input type="text" id="buffalo" name="buffalo" placeholder="Number of Insured (2020)" value={selectedLiveStockInsuranceDetailsbuffalo20} onChange={(e) => setSelectedLiveStockInsuranceDetailsbuffalo20(e.target.value)} />
               <input type="text" id="buffalo" name="buffalo" placeholder="Number of Insured (2021)" value={selectedLiveStockInsuranceDetailsbuffalo21} onChange={(e) => setSelectedLiveStockInsuranceDetailsbuffalo21(e.target.value)} />
               <input type="text" id="buffalo" name="buffalo" placeholder="Number of Insured (2022)" value={selectedLiveStockInsuranceDetailsbuffalo22} onChange={(e) => setSelectedLiveStockInsuranceDetailsbuffalo22(e.target.value)} />
@@ -2431,35 +1841,20 @@ const handlesubVarity = (value) => {
           borderRadius: '8px', 
           boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
         }}
-        onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'} 
+        onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'} // Change color on hover
         onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
       >ADD INFORMATION</button>
       <ConfirmationModal
         isOpen={isModalOpen}
         onConfirm={handleConfirm}
         onCancel={handleCancel}
-      />  <div style={{ textAlign: 'center' }}>
-      {/* Your form elements */}
-      <button style={{ backgroundColor: '#0096FF', border: 'none', 
-          color: 'white', 
-          padding: '15px 32px', 
-          textAlign: 'center', 
-          textDecoration: 'none', 
-          display: 'block', 
-          fontSize: '16px', 
-          margin: '25px auto', 
-          transitionDuration: '0.10s', 
-          cursor: 'pointer', 
-          borderRadius: '8px',  }} onClick={handleViewReport}>View Report</button>
-    </div>
-    
+      />
         <footer style={{ backgroundColor: '#E8F5E9', padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <p style={{ margin: 0 }}>Copyright &copy; {year.getFullYear()} Dhan</p>
           <div>
             <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', gap: '20px' }}>
               <a href="https://www.dhan.org/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>About Us</a>
-              <li> 
-           <div>
+              <li> <div>
                 <span onClick={toggleAddress}>Address</span>
                 {showAddress && (
                   <div>
