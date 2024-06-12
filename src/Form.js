@@ -811,10 +811,6 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  fetchcropmaster1();
-}, [fetchcropmaster1]);
-
-useEffect(() => {
   if (selectedcropmaster1) {
     fetchcropvariety1(selectedcropmaster1);
   }
@@ -892,9 +888,6 @@ const fetchcropsubvariety2 = async (v_id) => {
 useEffect(() => {
   fetchcropmaster2();
 }, []);
-useEffect(() => {
-  fetchcropmaster2();
-}, [fetchcropmaster2]);
 
 useEffect(() => {
   if (selectedcropmaster2) {
@@ -974,10 +967,6 @@ const fetchcropsubvariety3 = async (v_id) => {
 useEffect(() => {
   fetchcropmaster3();
 }, []);
-
-useEffect(() => {
-  fetchcropmaster3();
-}, [fetchcropmaster3]);
 
 useEffect(() => {
   if (selectedcropmaster3) {
@@ -1060,10 +1049,6 @@ const fetchcropsubvariety = async (v_id) => {
 useEffect(() => {
   fetchcropmaster();
 }, []);
-
-useEffect(() => {
-  fetchcropmaster();
-}, [fetchcropmaster]);
 
 useEffect(() => {
   if (selectedcropmaster) {
