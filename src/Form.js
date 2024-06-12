@@ -237,6 +237,8 @@ function Form() {
     navigate('/record');
   };
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [message, setMessage] = useState('');
 
   const initialShowFields = {
     tankfed: false,
@@ -564,7 +566,7 @@ function Form() {
   };
   const emptyValue = async () => {
 
-   setStartMonth('');  setEndMonth(''); setSelectedState(''); setSelectedDistrict(''); setSelectedLocation(''); setSelectedClusters(''); setSelectedGroups(''); setSelectedMembers(''); setSelectedDoorNo(''); setSelectedStreet(''); setSelectedAadharNumber(''); setSelectedFarmerName(''); setSelectedSpouseName(''); setSelectedFatherName(''); setSelectedDateBirth(''); setSelectedGender(''); setSelectedFarmerMobile(''); setSelectedAlternateNumber(''); setSelectedIsMemberInFPO(''); setSelectedNameOfTheFPO(''); setSelectedLatitude('');
+    setIsSubmitted(true);  setStartMonth('');  setEndMonth(''); setSelectedState(''); setSelectedDistrict(''); setSelectedLocation(''); setSelectedClusters(''); setSelectedGroups(''); setSelectedMembers(''); setSelectedDoorNo(''); setSelectedStreet(''); setSelectedAadharNumber(''); setSelectedFarmerName(''); setSelectedSpouseName(''); setSelectedFatherName(''); setSelectedDateBirth(''); setSelectedGender(''); setSelectedFarmerMobile(''); setSelectedAlternateNumber(''); setSelectedIsMemberInFPO(''); setSelectedNameOfTheFPO(''); setSelectedLatitude('');
     setSelectedLongitude(''); setSelectedIrrigationType(''); setSelectedTotalAcresInTankfed(''); setSelectedAreaOfCultivationInTankfed(''); setSelectedSoilType1(''); setSelectedLandOwnership1(''); setSelectedCultivationPractice1(''); setSelectedLandPosition1(''); setSelectedLandType1(''); 
     setSelectedSeason1(''); setSelectedFertilizer1(''); setSelectedBioFertilizer1('');
     setSelectedLastYearYields1(''); setSelectedRateOfSales1(''); setSelectedAvailabilityOfMachinery1(''); setSelectedCropInsurance1('');
@@ -804,9 +806,10 @@ const fetchcropsubvariety1 = async (v_id) => {
   }
 };
 
-fetchcropmaster1();{
- [fetchcropmaster1];
-}
+useEffect(() => {
+  fetchcropmaster1();
+}, []);
+
 useEffect(() => {
   if (selectedcropmaster1) {
     fetchcropvariety1(selectedcropmaster1);
