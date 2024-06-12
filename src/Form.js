@@ -267,11 +267,13 @@ function Form() {
         (error) => {
           console.error("Error fetching location", error);
           setError(error.message);
+          alert(`Error fetching location: ${error.message}`);
         }
       );
     } else {
-      setError('Geolocation is not supported by this browser.');
-    }
+      const errorMsg = 'Geolocation is not supported by this browser.';
+      setError(errorMsg);
+      alert(errorMsg);    }
   };
   
   const handleCheckboxChange = (event) => {
@@ -343,6 +345,7 @@ function Form() {
       alert('Please fill out farmer mobile');
     }else{
           emptyValue(); 
+          
     }
 
     const formData = {
