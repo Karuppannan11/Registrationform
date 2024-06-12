@@ -805,10 +805,9 @@ const fetchcropsubvariety1 = async (v_id) => {
     console.error(error);
   }
 };
-
 useEffect(() => {
-  fetchcropmaster1();
-}, []);
+  fetchcropmaster1(); // Example function used in the effect
+}, [fetchcropmaster1]);
 
 useEffect(() => {
   if (selectedcropmaster1) {
