@@ -804,10 +804,9 @@ const fetchcropsubvariety1 = async (v_id) => {
   }
 };
 
-useEffect(() => {
-  fetchcropmaster1(); // Assuming fetchcropmaster2 is defined elsewhere
-}, [fetchcropmaster1]);
-
+fetchcropmaster1();{
+ [fetchcropmaster1];
+}
 useEffect(() => {
   if (selectedcropmaster1) {
     fetchcropvariety1(selectedcropmaster1);
