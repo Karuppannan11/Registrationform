@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useCallback } from 'react';
 import ConfirmationModal from './ConfirmationModal';
 import { useNavigate } from 'react-router-dom';
 const BASE_URL_STATE = 'http://192.168.101.154:5000/api';
@@ -764,19 +764,6 @@ function Form() {
   
 //
 
-const fetchcropmaster1 = async () => {
-  try {
-    const response = await fetch(`${BASE_URL_STATE}/cropmaster1`);
-    if (!response.ok) {
-      throw new Error('Network request failed');
-    }
-    const data = await response.json();
-    setcropmaster1(data);
-    console.log(cropmaster1);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 const fetchcropvariety1 = async (ccode) => {
   try {
@@ -805,10 +792,40 @@ const fetchcropsubvariety1 = async (v_id) => {
     console.error(error);
   }
 };
+// useEffect(() => {
+//   const fetchcropmaster1 = async () => {
+//     try {
+//       const response = await fetch(`${BASE_URL_STATE}/cropmaster1`);
+//       if (!response.ok) {
+//         throw new Error('Network request failed');
+//       }
+//       const data = await response.json();
+//       setcropmaster1(data);
+//       console.log(cropmaster1);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+  
+// }, [fetchcropmaster1]); // add the missing dependency here
 
+
+const fetchcropmaster1 = useCallback(async () => {
+  try {
+    const response = await fetch(`${BASE_URL_STATE}/cropmaster1`);
+    if (!response.ok) {
+      throw new Error('Network request failed');
+    }
+    const data = await response.json();
+    setcropmaster1(data);
+    console.log(data); // Changed to log data instead of cropmaster1 to avoid closure issue
+  } catch (error) {
+    console.error(error);
+  }
+}, []);
 useEffect(() => {
   fetchcropmaster1();
-}, []);
+}, [fetchcropmaster1]); // Correctly added the dependency
 
 useEffect(() => {
   if (selectedcropmaster1) {
