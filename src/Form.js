@@ -1062,8 +1062,8 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  fetchcropmaster4();
-}, [fetchcropmaster4]);
+  fetchcropmaster();
+}, [fetchcropmaster]);
 
 useEffect(() => {
   if (selectedcropmaster) {
